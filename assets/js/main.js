@@ -68,12 +68,7 @@
   if (yearEl) yearEl.textContent = String(y);
 
   // Normalize clean URLs: ensure /rules directory has trailing slash for relative links
-  try {
-    const path = window.location.pathname;
-    if (path === '/rules') {
-      window.location.replace('/rules/');
-    }
-  } catch (e) {}
+  // Removed to avoid redirect loops on Netlify
 
   // Rules (Text) loader
   async function initRulesText() {
