@@ -1,4 +1,5 @@
-/rules /rules/ 301!
+/rules /rules/index.html 200
+/rules/ /rules/index.html 200
 /competitions /competitions.html 301!
 /profile /profile.html 301!
 /rights /rights.html 301!
