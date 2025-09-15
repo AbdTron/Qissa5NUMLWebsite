@@ -1,0 +1,5 @@
+/rules /rules/ 301!
+/competitions /competitions.html 301!
+/profile /profile.html 301!
+/rights /rights.html 301!
+/rules/* /rules/:splat 200

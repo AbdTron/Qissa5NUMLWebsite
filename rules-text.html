@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rules (Text) — Qissa'25</title>
+    <meta name="description" content="Plain-text version of the Qissa'25 rulebook with a generated table of contents.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/img/qissa-logo.svg" type="image/svg+xml">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body class="page-rules-text">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-logo" src="assets/img/qissa-logo.svg" alt="Qissa logo" width="28" height="28">
+        <span class="brand-text">Qissa'25</span>
+      </a>
+      <a class="uni-badge" href="index.html#about" title="NUML">
+        <img src="assets/img/numl-logo.svg" alt="NUML" width="24" height="24">
+      </a>
+      <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#events">Events</a></li>
+          <li><a href="index.html#schedule">Schedule</a></li>
+          <li><a href="competitions.html">Competitions</a></li>
+          <li><a href="rules.html">Rules (PDF)</a></li>
+          <li><a class="active" href="#">Rules (Text)</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero compact" aria-label="Rules (Text)">
+        <div class="container hero-content">
+          <h1>Rulebook — Text Version</h1>
+          <p class="subtitle">Searchable, readable version of the rules. Use the table of contents to jump to sections.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="rules.html">Open PDF</a>
+            <a class="btn btn-ghost" href="assets/docs/Qissa%2725%20Rulebook.txt" download>Download TXT</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container rules-wrap">
+          <aside class="toc" id="toc" aria-label="Table of contents">
+            <div class="toc-inner">
+              <h2>Contents</h2>
+              <nav id="toc-list"></nav>
+            </div>
+          </aside>
+          <article class="rules-text" id="rules-text" data-src="assets/docs/Qissa%2725%20Rulebook.txt" aria-live="polite">
+            <div class="loading">Loading rulebook…</div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Qissa'25 • NUML</p>
+        <nav aria-label="Footer">
+          <a href="index.html#about">About</a>
+          <a href="rules.html">Rules</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+ </html>
+
+
