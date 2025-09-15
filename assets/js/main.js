@@ -149,7 +149,7 @@
   let ann = [];
   async function loadAnnouncements() {
     try {
-      const response = await fetch('assets/data/announcements.json');
+      const response = await fetch('/assets/data/announcements.json');
       ann = await response.json();
       renderAnnouncements();
     } catch (e) {
