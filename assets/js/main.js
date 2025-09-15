@@ -174,6 +174,21 @@
 
   loadAnnouncements();
 
+  // Force navigation for Rules hub PDF button if needed
+  document.addEventListener('click', (e) => {
+    const target = e.target instanceof Element ? e.target : null;
+    if (!target) return;
+    const btn = target.closest('[data-open-pdf]');
+    if (btn) {
+      e.preventDefault();
+      try {
+        window.location.href = (btn.getAttribute('href') || '../rules.html');
+      } catch (_) {
+        window.location.assign('../rules.html');
+      }
+    }
+  });
+
   // Announcements modal
   function openAnn(i) {
     const m = document.getElementById('ann-modal');

@@ -234,11 +234,17 @@ input:focus, textarea:focus { box-shadow: var(--ring); border-color: var(--prima
 .site-footer nav a:hover { color: var(--text); }
 
 @media (max-width: 640px) {
-  .hero { padding: 72px 0 40px; }
+  .hero { padding: 64px 0 28px; }
   .hero { min-height: 58vh; }
-  .hero .hero-img { object-fit: contain; object-position: top center; background-color: transparent; }
-  .hero h1 { font-size: clamp(32px, 8vw, 44px); }
-  .subtitle { font-size: 16px; }
+  .hero .hero-img { object-fit: contain; object-position: top center; }
+  .container { padding-left: 16px; padding-right: 16px; }
+  .grid-2 { grid-template-columns: 1fr !important; gap: 16px; }
+  .cards { grid-template-columns: 1fr; gap: 12px; }
+  .section { padding: 28px 0; }
+  .callout { padding: 12px 14px; }
+  .about-card { padding: 12px; }
+  .about-card .about-img { margin-bottom: 10px; }
+  .ann-list .ann-item { text-align: left; }
 }
 
 
