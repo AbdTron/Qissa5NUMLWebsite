@@ -1,12 +1,28 @@
 {
   "name": "Qissa'25 — NUML",
   "short_name": "Qissa'25",
-  "start_url": "/index.html",
+  "description": "Qissa'25 festival — events, rules, schedule, and registration.",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#0f1221",
   "theme_color": "#6a59ff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["education", "events", "festival"],
   "icons": [
-    { "src": "assets/img/qissa-logo.svg", "sizes": "any", "type": "image/svg+xml" }
+    {
+      "src": "assets/img/Qissa Logo NO BG.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/img/Qissa Logo NO BG.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
 

@@ -87,6 +87,8 @@ body {
 .btn-primary:hover { box-shadow: 0 12px 26px rgba(124,108,255,.45); }
 .btn-ghost { background: transparent; color: var(--text); border-color: rgba(255,255,255,.18); }
 .btn-ghost:hover { background: rgba(255,255,255,.06); }
+.btn-secondary { background: transparent; color: var(--accent); border-color: rgba(56,232,176,.3); }
+.btn-secondary:hover { background: rgba(56,232,176,.1); border-color: rgba(56,232,176,.5); }
 .hero .btn-primary { background: #11162e; box-shadow: 0 12px 26px rgba(0,0,0,.35); }
 .hero .btn-primary:hover { box-shadow: 0 14px 28px rgba(0,0,0,.45); }
 .hero .btn-ghost { color: #11162e; background: rgba(255,255,255,.85); border-color: rgba(17,22,46,.25); }
