@@ -165,6 +165,11 @@
       const response = await fetch('/assets/data/announcements.json');
       ann = await response.json();
       renderAnnouncements();
+      // Auto-open first announcement (date change notification) on page load
+      if (ann.length > 0) {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => openAnn(0), 500);
+      }
     } catch (e) {
       console.warn('Failed to load announcements, using fallback');
       ann = [
