@@ -163,6 +163,23 @@ h2 { font-size: 32px; margin: 0 0 14px; letter-spacing: -.02em; }
 .modal-body { color: var(--muted); margin-top: 8px; }
 .modal-close { background: transparent; border: 0; color: var(--text); font-size: 20px; cursor: pointer; }
 
+/* Postponement Notification Popup */
+.postponement-popup { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 200; }
+.postponement-popup.show { display: flex; }
+.postponement-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.75); backdrop-filter: blur(4px); }
+.postponement-popup-dialog { position: relative; width: min(560px, 92%); background: var(--surface); border: 2px solid var(--primary); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08) inset; padding: 24px; max-height: 90vh; overflow-y: auto; animation: popupSlideIn 0.3s ease-out; }
+@keyframes popupSlideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.postponement-popup-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
+.postponement-popup-title { margin: 0; font-size: 24px; font-weight: 700; color: var(--text); }
+.postponement-popup-close { background: transparent; border: 0; color: var(--text); font-size: 28px; cursor: pointer; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: background .2s ease; }
+.postponement-popup-close:hover { background: rgba(255,255,255,.1); }
+.postponement-popup-body { color: var(--text); margin-bottom: 20px; line-height: 1.6; font-size: 16px; }
+.postponement-popup-body p { margin: 0; }
+.postponement-popup-footer { display: flex; justify-content: flex-end; gap: 12px; }
+
 /* Profile */
 .profile-wrap { display: grid; place-items: center; }
 .profile-card { width: min(760px, 96%); background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; box-shadow: var(--shadow); padding: 28px 24px; text-align: center; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }

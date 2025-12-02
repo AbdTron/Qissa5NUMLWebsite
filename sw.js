@@ -1,5 +1,5 @@
 // Service Worker for Qissa'25 PWA
-const CACHE_NAME = 'qissa25-v1';
+const CACHE_NAME = 'qissa25-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -24,20 +24,35 @@ self.addEventListener('install', event => {
         return cache.addAll(urlsToCache);
       })
   );
+  self.skipWaiting(); // Allow new service worker to activate immediately
 });
 
-// Fetch event
+// Fetch event - Network first strategy (always get fresh content)
 self.addEventListener('fetch', event => {
+  // Never cache the service worker file itself - always fetch fresh
+  if (event.request.url.includes('/sw.js')) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then(response => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request);
+        // Network request succeeded - cache it and return fresh response
+        const responseToCache = response.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, responseToCache);
+        });
+        return response;
+      })
+      .catch(() => {
+        // Network request failed - fallback to cache for offline support
+        return caches.match(event.request);
       })
   );
 });
 
-// Activate event
+// Activate event - Clean up old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -51,4 +66,5 @@ self.addEventListener('activate', event => {
       );
     })
   );
+  return self.clients.claim(); // Take control of all pages immediately
 });

@@ -51,7 +51,7 @@
         <div class="container hero-content">
           <h1>Qissa'25</h1>
           <p class="subtitle">Where stories meet stage — celebrate creativity, culture, and community.</p>
-          <div class="countdown" data-deadline="2025-12-11T00:00:00+05:00" aria-live="polite">
+          <div class="countdown" aria-live="polite">
             <div class="time"><span id="dd">00</span><small>Days</small></div>
             <div class="time"><span id="hh">00</span><small>Hours</small></div>
             <div class="time"><span id="mm">00</span><small>Minutes</small></div>
@@ -161,6 +161,22 @@
           <button class="modal-close" aria-label="Close" data-close>&times;</button>
         </div>
         <div id="ann-body" class="modal-body"></div>
+      </div>
+    </div>
+
+    <div id="postponement-notification" class="postponement-popup" role="alertdialog" aria-modal="true" aria-labelledby="postponement-title" aria-hidden="true">
+      <div class="postponement-popup-backdrop" data-close-postponement></div>
+      <div class="postponement-popup-dialog">
+        <div class="postponement-popup-header">
+          <h3 id="postponement-title" class="postponement-popup-title">Important Update</h3>
+          <button class="postponement-popup-close" aria-label="Close" data-close-postponement>&times;</button>
+        </div>
+        <div class="postponement-popup-body">
+          <p>Due to NUML's 26th Convocation, we are now postponing our dates. Please note that 11th December 2025 is the Ambassador Orientation Day.</p>
+        </div>
+        <div class="postponement-popup-footer">
+          <button class="btn btn-primary" data-close-postponement>Understood</button>
+        </div>
       </div>
     </div>
 

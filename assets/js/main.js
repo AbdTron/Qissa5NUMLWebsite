@@ -8,6 +8,18 @@
       navigator.serviceWorker.register('/sw.js')
         .then(registration => {
           console.log('SW registered: ', registration);
+          
+          // Check for service worker updates when page becomes visible
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+              registration.update();
+            }
+          });
+          
+          // Check for updates periodically (every 5 minutes)
+          setInterval(() => {
+            registration.update();
+          }, 5 * 60 * 1000);
         })
         .catch(registrationError => {
           console.log('SW registration failed: ', registrationError);
@@ -55,8 +67,8 @@
   function initCountdown() {
     const container = $('.countdown');
     if (!container) return;
-    const deadlineIso = container.getAttribute('data-deadline');
-    if (!deadlineIso) return;
+    // Set deadline to Dec 11, 2025 21:00:00 (9 PM) Pakistan Time (UTC+5)
+    const deadlineIso = '2025-12-11T21:00:00+05:00';
     const deadline = new Date(deadlineIso).getTime();
     const dd = $('#dd');
     const hh = $('#hh');
@@ -65,7 +77,17 @@
 
     function update() {
       const now = Date.now();
-      const diff = Math.max(0, deadline - now);
+      const diff = deadline - now;
+      
+      // If deadline has passed or reached, show 00:00:00
+      if (diff <= 0) {
+        dd && (dd.textContent = '00');
+        hh && (hh.textContent = '00');
+        mm && (mm.textContent = '00');
+        ss && (ss.textContent = '00');
+        return;
+      }
+      
       const days = Math.floor(diff / (24 * 60 * 60 * 1000));
       const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
       const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
@@ -216,6 +238,48 @@
       if (m) { m.classList.remove('open'); m.setAttribute('aria-hidden', 'true'); }
     }
   });
+
+  // Postponement notification popup
+  function initPostponementNotification() {
+    const popup = document.getElementById('postponement-notification');
+    if (!popup) return;
+    
+    // Check if user has already seen this notification (using sessionStorage)
+    const hasSeenNotification = sessionStorage.getItem('postponement-notification-seen');
+    
+    // Show popup on page load if not seen yet
+    if (!hasSeenNotification) {
+      setTimeout(() => {
+        popup.classList.add('show');
+        popup.removeAttribute('aria-hidden');
+      }, 500); // Small delay for better UX
+    }
+    
+    // Close popup handler
+    function closePopup() {
+      popup.classList.remove('show');
+      popup.setAttribute('aria-hidden', 'true');
+      sessionStorage.setItem('postponement-notification-seen', 'true');
+    }
+    
+    // Close on button click or backdrop click
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+      if (target.hasAttribute('data-close-postponement')) {
+        closePopup();
+      }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('show')) {
+        closePopup();
+      }
+    });
+  }
+  
+  initPostponementNotification();
 })();
 
 
