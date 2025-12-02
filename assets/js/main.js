@@ -239,47 +239,6 @@
     }
   });
 
-  // Postponement notification popup
-  function initPostponementNotification() {
-    const popup = document.getElementById('postponement-notification');
-    if (!popup) return;
-    
-    // Check if user has already seen this notification (using sessionStorage)
-    const hasSeenNotification = sessionStorage.getItem('postponement-notification-seen');
-    
-    // Show popup on page load if not seen yet
-    if (!hasSeenNotification) {
-      setTimeout(() => {
-        popup.classList.add('show');
-        popup.removeAttribute('aria-hidden');
-      }, 500); // Small delay for better UX
-    }
-    
-    // Close popup handler
-    function closePopup() {
-      popup.classList.remove('show');
-      popup.setAttribute('aria-hidden', 'true');
-      sessionStorage.setItem('postponement-notification-seen', 'true');
-    }
-    
-    // Close on button click or backdrop click
-    document.addEventListener('click', (e) => {
-      const target = e.target;
-      if (!(target instanceof Element)) return;
-      if (target.hasAttribute('data-close-postponement')) {
-        closePopup();
-      }
-    });
-    
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && popup.classList.contains('show')) {
-        closePopup();
-      }
-    });
-  }
-  
-  initPostponementNotification();
 })();
 
 
