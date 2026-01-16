@@ -8,14 +8,14 @@
       navigator.serviceWorker.register('/sw.js')
         .then(registration => {
           console.log('SW registered: ', registration);
-          
+
           // Check for service worker updates when page becomes visible
           document.addEventListener('visibilitychange', () => {
             if (!document.hidden) {
               registration.update();
             }
           });
-          
+
           // Check for updates periodically (every 5 minutes)
           setInterval(() => {
             registration.update();
@@ -67,8 +67,8 @@
   function initCountdown() {
     const container = $('.countdown');
     if (!container) return;
-    // Set deadline to Dec 11, 2025 21:00:00 (9 PM) Pakistan Time (UTC+5)
-    const deadlineIso = '2025-12-11T21:00:00+05:00';
+    // Set deadline to Jan 17, 2026 08:00:00 (8 AM) Pakistan Time (UTC+5)
+    const deadlineIso = '2026-01-17T08:00:00+05:00';
     const deadline = new Date(deadlineIso).getTime();
     const dd = $('#dd');
     const hh = $('#hh');
@@ -78,7 +78,7 @@
     function update() {
       const now = Date.now();
       const diff = deadline - now;
-      
+
       // If deadline has passed or reached, show 00:00:00
       if (diff <= 0) {
         dd && (dd.textContent = '00');
@@ -87,7 +87,7 @@
         ss && (ss.textContent = '00');
         return;
       }
-      
+
       const days = Math.floor(diff / (24 * 60 * 60 * 1000));
       const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
       const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
